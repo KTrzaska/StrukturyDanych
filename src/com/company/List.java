@@ -17,6 +17,26 @@ public class List {
             ListItem elem = new ListItem(value, getFirst(),null);
             first.setPrev(elem);
             first = elem;
+            
+            /* OR, without getFirst/Last(): 
+            
+            public void addFirst(int value){
+
+    List elem = new List(value, null, null);
+
+    if(isEmpty()){
+
+        first = last = elem;
+    } else {
+
+        elem.setNext(first);
+        first.setPrev(elem);
+        first = elem;
+
+
+
+    }
+ */          
         }
     }
 
@@ -28,6 +48,8 @@ public class List {
             ListItem elem = new ListItem(value, null, getLast());
             last.setNext(elem);
             last = elem;
+            
+      
         }
     }
 
@@ -40,7 +62,10 @@ public class List {
         if (first == last) {
             first = last = null;
         } else {
-            first = first.getNext();
+         first = first.getNext();
+         // need "last.setNext(null);" to breake "next" referention
+            
+            
         }
         return value;
     }
@@ -54,6 +79,7 @@ public class List {
             first = last = null;
         } else {
             last = last.getPrev();
+            // need "first.setPrev(null);" to breake "next" reference
         }
         return value;
     }
@@ -106,7 +132,7 @@ public class List {
         System.out.println();
     }
 
-    public ListItem getFirst() {
+    public ListItem getFirst() { // not nedeed at all
         return first;
     }
 
